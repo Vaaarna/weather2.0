@@ -1,0 +1,30 @@
+{
+  "name": "vuecounter123",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.4.0",
+    "vite": "^4.4.11"
+  },
+
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "Preserve",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true
+  },
+  "vueCompilerOptions": {
+    "target": 3.3
+  }
+}
