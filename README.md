@@ -2,7 +2,7 @@ tasks:
 1. move what already exists to vue
 2. rename to weather
 3. make day hours expandable 
-4. start scrolled to 6am or something, so dont have to scroll past 1-6 am etc or smth along those lines
+4. first hour shown when expanded is 5am then 24 housrs bbbbbbbbbbbboooooooooooooobbbbbbbbbbbs
 
 
 
