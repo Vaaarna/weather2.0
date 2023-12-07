@@ -14,23 +14,53 @@ function toggle() {
 
 
 // class day{
-//   day_overview = temp, wind, etc.
+//   day_overview = temperature, wind, etc.
 //   hours = [
-//     {time:06, temp=31},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
-//     {time:02 temp=21},
+//     {time:01, temperature=31},
+//     {time:02 temperature=21},
+//     {time:03 temperature=21},
+//     {time:04 temperature=21},
+//     {time:05 temperature=21},
+//     ...
+//     {time:22 temperature=21},
+//     {time:23 temperature=21},
+//     {time:24 temperature=21},
 //   ]
 // }
 
 // all_our_data = [day1, day2, day3, day4]
 
+class WeatherHour {
+  constructor(time, temperature) {
+    this.time = time;
+    this.temperature = temperature;
+  }
+}
+
+class WeatherDay {
+  constructor(dayOverview, hours) {
+    this.dayOverview = dayOverview;
+    this.hours = hours;
+  }
+}
+
+const allDays = ref([
+  new WeatherDay(
+    { temperature: 25, wind: '10 mph', humidity: 70 },
+    [
+      new WeatherHour(1, 31),
+      new WeatherHour(2, 21),
+      new WeatherHour(3, 21),
+      // ... other hours
+      new WeatherHour(22, 21),
+      new WeatherHour(23, 21),
+      new WeatherHour(24, 21)
+    ]
+  ),
+  // ... other days
+]);
+
+console.log(`dayyyyyy ${allDays.value[0].dayOverview.temperature}`)
 
 
 const data = ref(null)
@@ -73,10 +103,10 @@ watchEffect(fetchData)
     <div class="outerContainer" @click="toggle">
       <div class="dayCont">
         <WindIconInfo :wind_speed="data['daily']['windspeed_10m_max'][0]" :wind_direction="360"></WindIconInfo>
+        <WindIconInfo :wind_speed="allDays[0].dayOverview.temperature" :wind_direction="360"></WindIconInfo>
         <WindIconInfo :wind_speed="5" :wind_direction="360"></WindIconInfo>
         <WindIconInfo :wind_speed="5" :wind_direction="360"></WindIconInfo>
-        <WindIconInfo :wind_speed="5" :wind_direction="360"></WindIconInfo>
-
+{{ allDays[0].temperature }}
         <div v-if="expanded">↟</div>
         <div v-else>↡</div>
       </div>
