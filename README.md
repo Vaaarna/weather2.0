@@ -1,5 +1,9 @@
 tasks:
-1. move what already exists to vue
+1. move function fetch data to new file
+
+
+
+move what already exists to vue
 2. rename to weather
 3. make day hours expandable 
 4. first hour shown when expanded is 5am then 24 housrs bbbbbbbbbbbboooooooooooooobbbbbbbbbbbs

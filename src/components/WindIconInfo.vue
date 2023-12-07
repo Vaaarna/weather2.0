@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <p>wimddddIcon</p>
+  <p>wimddddIcon: {{wind_speed}} as a </p>
 </template>
 
 <style></style>
