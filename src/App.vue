@@ -2,6 +2,8 @@
 
 <script setup>
 import { ref } from "vue";
+import WindInfo from "./components/WindInfo.vue";
+
 const count = ref(0)
 const expanded = ref(false)
 
@@ -15,7 +17,11 @@ function toggle() {
   <main>
     <div class="outerContainer" @click="toggle">
       <div class="dayCont">
-        header!
+        <WindInfo :wind_speed="5" :wind_direction="360" ></WindInfo>
+        <WindInfo :wind_speed="5" :wind_direction="360" ></WindInfo>
+        <WindInfo :wind_speed="5" :wind_direction="360" ></WindInfo>
+        <WindInfo :wind_speed="5" :wind_direction="360" ></WindInfo>
+        
         <div v-if="expanded">↟</div>
         <div v-else>↡</div>
       </div>
@@ -41,9 +47,13 @@ button {
 }
 
 main {
-  background-color: rgb(52, 114, 52);
-  height: 100vh;
-  width: 100vh;
+  background-image: url("field1.jpg");
+  height: 98vh;
+  width: 99vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,27 +61,32 @@ main {
 
 div {
   text-align: center;
+  align-items: center;
 
 }
 
 .outerContainer {
   display: flex;
   flex-direction: column;
-}
-.dayCont {
   background-color: rgb(72, 212, 212);
-  display: flex;
- 
- 
 }
+
+.dayCont {
+  display: flex;
+  background-color: rgb(23, 182, 182);
+
+
+
+}
+
 .hourCont {
   background-color: rgb(31, 103, 236);
   display: flex;
   flex-direction: column;
+  gap: 1vh;
 }
-
 </style>
-
+<!-- use css property "order:" to make 1-5am appear last? or something like it apperntly messes with html accesibility whatever that means grrrr-->
 
 
 
