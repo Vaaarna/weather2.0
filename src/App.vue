@@ -13,6 +13,25 @@ function toggle() {
 }
 
 
+// class day{
+//   day_overview = temp, wind, etc.
+//   hours = [
+//     {time:06, temp=31},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//     {time:02 temp=21},
+//   ]
+// }
+
+// all_our_data = [day1, day2, day3, day4]
+
+
 
 const data = ref(null)
 
@@ -40,7 +59,7 @@ async function fetchData(){
   data.value = await (await fetch(url)).json()
   console.log(data.value)
 
-  
+
 }
 
 watchEffect(fetchData)
