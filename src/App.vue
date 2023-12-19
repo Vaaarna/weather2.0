@@ -7,6 +7,7 @@ import { watchEffect } from "vue";
 
 const count = ref(0)
 const expanded = ref(false)
+const allDays = ref([])
 
 function toggle() {
   expanded.value = !expanded.value
@@ -30,10 +31,29 @@ function toggle() {
 
 // all_our_data = [day1, day2, day3, day4]
 
+class OverView {
+  constructor(time, temp_min, temp_max, precipitation, weathercode, wind_dir, wind_speed) {
+    this.time = new Date(time);
+    this.temp_min = temp_min;
+    this.temp_max = temp_max;
+    this.precipitation = precipitation;
+    this.weathercode = weathercode;
+    this.wind_dir = wind_dir;
+    this.wind_speed = wind_speed;
+  }
+}
+
 class WeatherHour {
-  constructor(time, temperature) {
-    this.time = time;
-    this.temperature = temperature;
+  constructor(time, temp_app, is_day, precipitation, temp, uv_index, weathercode, wind_dir, wind_speed ) {
+    this.time = new Date(time);
+    this.temp_app = temp_app;
+    this.is_day = is_day;
+    this.precipitation = precipitation;
+    this.temp = temp;
+    this.uv_index = uv_index;
+    this.weathercode = weathercode;
+    this.wind_dir = wind_dir;
+    this.wind_speed = wind_speed;
   }
 }
 
@@ -44,28 +64,14 @@ class WeatherDay {
   }
 }
 
-const allDays = ref([
-  new WeatherDay(
-    { temperature: 25, wind: '10 mph', humidity: 70 },
-    [
-      new WeatherHour(1, 31),
-      new WeatherHour(2, 21),
-      new WeatherHour(3, 21),
-      // ... other hours
-      new WeatherHour(22, 21),
-      new WeatherHour(23, 21),
-      new WeatherHour(24, 21)
-    ]
-  ),
-  // ... other days
-]);
 
-console.log(`dayyyyyy ${allDays.value[0].dayOverview.temperature}`)
+
+// console.log(`dayyyyyy ${allDays.value[0].dayOverview.temperature}`)
 
 
 const data = ref(null)
 
-async function fetchData(){
+async function fetchData() {
   var url = new URL("https://api.open-meteo.com/v1/forecast/");
   url.searchParams.append("latitude", 56.959);
   url.searchParams.append("longitude", 24.061);
@@ -90,6 +96,45 @@ async function fetchData(){
   console.log(data.value)
 
 
+  for (var i = 0; i < data.value['daily']['time'].length; i++) {
+
+    const overview = new OverView(
+      data.value['daily']['time'][i],
+      data.value['daily']['temperature_2m_min'][i],
+      data.value['daily']['temperature_2m_max'][i],
+      data.value['daily']['precipitation_probability_max'][i],
+      data.value['daily']['weathercode'][i],
+      data.value['daily']['winddirection_10m_dominant'][i],
+      data.value['daily']['windspeed_10m_max'][i]
+    )
+    const this_day = new WeatherDay(overview, [])
+
+    allDays.value.push(this_day)
+  }
+
+  for (var i = 0; i <  data.value['hourly']['time'].length; i++) {
+    const hour = new WeatherHour (
+      data.value['hourly']['time'][i],
+      data.value['hourly']['apparent_temperature'][i],
+      data.value['hourly']['is_day'][i],
+      data.value['hourly']['precipitation_probability'][i],
+      data.value['hourly']['temperature_2m'][i],
+      data.value['hourly']['uv_index'][i],
+      data.value['hourly']['weathercode'][i],
+      data.value['hourly']['winddirection_10m'][i],
+      data.value['hourly']['windspeed_10m'][i]
+    )
+
+    var target_date =  hour.time.getDate()
+    const found = allDays.value.find((day) => day.dayOverview.time.getDate() == target_date)
+
+    found.hours.push(hour)
+  }
+
+
+  console.log(`visa sdienas:`)
+  console.log(allDays.value)
+
 }
 
 watchEffect(fetchData)
@@ -103,10 +148,10 @@ watchEffect(fetchData)
     <div class="outerContainer" @click="toggle">
       <div class="dayCont">
         <WindIconInfo :wind_speed="data['daily']['windspeed_10m_max'][0]" :wind_direction="360"></WindIconInfo>
-        <WindIconInfo :wind_speed="allDays[0].dayOverview.temperature" :wind_direction="360"></WindIconInfo>
+        <!-- <WindIconInfo :wind_speed="allDays[0].dayOverview.temperature" :wind_direction="360"></WindIconInfo> -->
         <WindIconInfo :wind_speed="5" :wind_direction="360"></WindIconInfo>
         <WindIconInfo :wind_speed="5" :wind_direction="360"></WindIconInfo>
-{{ allDays[0].temperature }}
+        <!-- {{ allDays[0].temperature }} -->
         <div v-if="expanded">↟</div>
         <div v-else>↡</div>
       </div>
