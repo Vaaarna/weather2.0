@@ -1,35 +1,15 @@
 <!-- javscript house -->
-
 <script setup>
-import { ref } from "vue";
-import WindIconInfo from "./components/WindIconInfo.vue";
 import { watchEffect } from "vue";
+import { ref } from "vue";
+// import  DateC from 'C:/vueCounter123/src/components/DateC.vue';
 
-const count = ref(0)
 const expanded = ref(false)
 const allDays = ref([])
 
 function toggle() {
   expanded.value = !expanded.value
 }
-
-
-// class day{
-//   day_overview = temperature, wind, etc.
-//   hours = [
-//     {time:01, temperature=31},
-//     {time:02 temperature=21},
-//     {time:03 temperature=21},
-//     {time:04 temperature=21},
-//     {time:05 temperature=21},
-//     ...
-//     {time:22 temperature=21},
-//     {time:23 temperature=21},
-//     {time:24 temperature=21},
-//   ]
-// }
-
-// all_our_data = [day1, day2, day3, day4]
 
 class OverView {
   constructor(time, temp_min, temp_max, precipitation, weathercode, wind_dir, wind_speed) {
@@ -40,11 +20,9 @@ class OverView {
     this.weathercode = weathercode;
     this.wind_dir = wind_dir;
     this.wind_speed = wind_speed;
-  }
-}
-
+  }}
 class WeatherHour {
-  constructor(time, temp_app, is_day, precipitation, temp, uv_index, weathercode, wind_dir, wind_speed ) {
+  constructor(time, temp_app, is_day, precipitation, temp, uv_index, weathercode, wind_dir, wind_speed) {
     this.time = new Date(time);
     this.temp_app = temp_app;
     this.is_day = is_day;
@@ -54,20 +32,12 @@ class WeatherHour {
     this.weathercode = weathercode;
     this.wind_dir = wind_dir;
     this.wind_speed = wind_speed;
-  }
-}
-
+  }}
 class WeatherDay {
   constructor(dayOverview, hours) {
     this.dayOverview = dayOverview;
     this.hours = hours;
-  }
-}
-
-
-
-// console.log(`dayyyyyy ${allDays.value[0].dayOverview.temperature}`)
-
+  }}
 
 const data = ref(null)
 
@@ -93,8 +63,7 @@ async function fetchData() {
 
   url.searchParams.append("timezone", "auto");
   data.value = await (await fetch(url)).json()
-  console.log(data.value)
-
+  // console.log(data.value)
 
   for (var i = 0; i < data.value['daily']['time'].length; i++) {
 
@@ -112,8 +81,8 @@ async function fetchData() {
     allDays.value.push(this_day)
   }
 
-  for (var i = 0; i <  data.value['hourly']['time'].length; i++) {
-    const hour = new WeatherHour (
+  for (var i = 0; i < data.value['hourly']['time'].length; i++) {
+    const hour = new WeatherHour(
       data.value['hourly']['time'][i],
       data.value['hourly']['apparent_temperature'][i],
       data.value['hourly']['is_day'][i],
@@ -125,33 +94,78 @@ async function fetchData() {
       data.value['hourly']['windspeed_10m'][i]
     )
 
-    var target_date =  hour.time.getDate()
+    var target_date = hour.time.getDate()
     const found = allDays.value.find((day) => day.dayOverview.time.getDate() == target_date)
 
     found.hours.push(hour)
   }
 
-
   console.log(`visa sdienas:`)
   console.log(allDays.value)
-
 }
 
 watchEffect(fetchData)
-
+ var placeholder = "lorem ipsum etc"
 
 </script>
 
 <!-- html house -->
 <template>
-  <main>
-    <div class="outerContainer" @click="toggle">
+  <main class="allDayMasterContainer">
+    <div class="oneDAyContainer" @click="toggle">
       <div class="dayCont">
-        <WindIconInfo :wind_speed="data['daily']['windspeed_10m_max'][0]" :wind_direction="360"></WindIconInfo>
-        <!-- <WindIconInfo :wind_speed="allDays[0].dayOverview.temperature" :wind_direction="360"></WindIconInfo> -->
-        <WindIconInfo :wind_speed="5" :wind_direction="360"></WindIconInfo>
-        <WindIconInfo :wind_speed="5" :wind_direction="360"></WindIconInfo>
-        <!-- {{ allDays[0].temperature }} -->
+        <div>20 dec aukksti</div>
+        
+        <!-- 
+        <div>temp temp </div>
+        <div>smal info1 smal info2 smal info3 </div>
+        <div>wind arrow</div> -->
+        <div v-if="expanded">↟</div>
+        <div v-else>↡</div>
+      </div>
+      <div class="hourCont" v-if="expanded">
+        <div>
+          5am
+        </div>
+        <div>
+          6am
+        </div>
+        <div>
+          7am
+        </div>
+      </div>
+    </div>
+    <div class="oneDAyContainer" @click="toggle">
+      <div class="dayCont">
+        <div>20 dec aukksti</div>
+        
+        <!-- 
+        <div>temp temp </div>
+        <div>smal info1 smal info2 smal info3 </div>
+        <div>wind arrow</div> -->
+        <div v-if="expanded">↟</div>
+        <div v-else>↡</div>
+      </div>
+      <div class="hourCont" v-if="expanded">
+        <div>
+          5am
+        </div>
+        <div>
+          6am
+        </div>
+        <div>
+          7am
+        </div>
+      </div>
+    </div>
+    <div class="oneDAyContainer" @click="toggle">
+      <div class="dayCont">
+        <div>20 dec aukksti</div>
+        
+        <!-- 
+        <div>temp temp </div>
+        <div>smal info1 smal info2 smal info3 </div>
+        <div>wind arrow</div> -->
         <div v-if="expanded">↟</div>
         <div v-else>↡</div>
       </div>
@@ -195,7 +209,13 @@ div {
 
 }
 
-.outerContainer {
+.allDayMasterContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(33, 59, 59);
+}
+
+.oneDAyContainer {
   display: flex;
   flex-direction: column;
   background-color: rgb(72, 212, 212);
