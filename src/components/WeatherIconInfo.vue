@@ -6,9 +6,14 @@ const props = defineProps({
 })
 
 </script>
-
+<!-- make it so depending on the incoming number shows the correct icon -->
 <template>
-    <p>weatherIcon</p>
+    <div> <img src="../assets/icons/cloud.png" alt="weatherIcon"></div>
 </template>
 
-<style></style>
+<style scoped>
+img {
+    width:70px;
+    padding: 7px;
+}
+</style>

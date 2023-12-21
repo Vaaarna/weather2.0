@@ -1,12 +1,11 @@
 tasks:
-1. move function fetch data to new file
+1. lai radas tik dienas cik pasutam
+2. izmantot datus vnk teksts
 
 
 
-move what already exists to vue
-2. rename to weather
-3. make day hours expandable 
-4. first hour shown when expanded is 5am then 24 housrs bbbbbbbbbbbboooooooooooooobbbbbbbbbbbs
+
+
 
 
 
