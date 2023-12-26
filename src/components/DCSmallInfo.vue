@@ -7,19 +7,45 @@ const props = defineProps({
     wind_direction: Number,
 
 })
-
+function windDir (i) {
+    if (i <= 23) {
+        i = "Z "; //🡣"
+    } else if (i <= 68) {
+        i = "ZA "; //🡧"
+    } else if (i <= 113) {
+        i = "A  "; //🡠"
+    } else if (i <= 158) {
+        i = "DA "; //🡤 "
+    } else if (i <= 203) {
+        i = "D  "; //🡡"
+    } else if (i <= 248) {
+        i = "DR "; //🡥"
+    } else if (i <= 293) {
+        i = "R "; //🡢"
+    } else if (i <= 338) {
+        i = "ZR "; //🡦"
+    } else if (i <= 360) {
+        i = "Z "; //🡣"
+    }
+    return i;
+}
 </script>
 
 <template>
-    <p>precipitation: {{precipitation}}%</p>
-    <p>wind: {{wind_speed}} km/h {{wind_direction}}</p>
+    <div class="smallInfoDiv">
+    <div class="infoLine">precipitation: {{precipitation}}%</div>
+    <div class="infoLine">wind: {{wind_speed}} km/h {{windDir(wind_direction)}}</div>
+    </div>
 </template>
 
 <style scoped>
-p {
+.smallInfoDiv { 
+    display: flex;
+    flex-direction: column;
     font-size: 80%;
+    align-items: flex-start;
+}
+.infoLine {
     text-align: left;
-    display: inline-block;
-
 }
 </style>

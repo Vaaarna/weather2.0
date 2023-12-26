@@ -4,6 +4,7 @@ import { WeatherDay, WeatherHour, OverView } from "../functions";
 import DCDate from "./DCDate.vue";
 import DCWeatherIcon from "./DCWeatherIcon.vue";
 import DCSmallInfo from "./DCSmallInfo.vue";
+import DCWindIcon from './DCWindIcon.vue';
 
 const props = defineProps({
     day_obj: WeatherDay
@@ -22,6 +23,7 @@ function toggle() {
         <DCWeatherIcon :weather_code="day_obj.dayOverview.weathercode"> </DCWeatherIcon>
         <DCSmallInfo :precipitation="day_obj.dayOverview.precipitation" :wind_direction="day_obj.dayOverview.wind_dir"
             :wind_speed="day_obj.dayOverview.wind_speed"></DCSmallInfo>
+        <DCWindIcon :wind_speed="day_obj.dayOverview.wind_speed" :wind_direction="day_obj.dayOverview.wind_dir"></DCWindIcon>
         <div v-if="expanded">↟</div>
         <div v-else>↡</div>
     </div>
