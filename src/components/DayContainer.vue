@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { WeatherDay, WeatherHour, OverView } from "../functions";
-import DateC from "./DateC.vue";
-import WeatherIconInfo from "./WeatherIconInfo.vue";
-import InfoDay from "./InfoDay.vue";
+import DCDate from "./DCDate.vue";
+import DCWeatherIcon from "./DCWeatherIcon.vue";
+import DCSmallInfo from "./DCSmallInfo.vue";
 
 const props = defineProps({
     day_obj: WeatherDay
@@ -18,10 +18,10 @@ function toggle() {
 
 <template>
     <div class="dayCont" @click="toggle">
-        <DateC :date="day_obj.dayOverview.time"></DateC>
-        <WeatherIconInfo :weather_code="day_obj.dayOverview.weathercode"> </WeatherIconInfo>
-        <InfoDay :precipitation="day_obj.dayOverview.precipitation" :wind_direction="day_obj.dayOverview.wind_dir"
-            :wind_speed="day_obj.dayOverview.wind_speed"></InfoDay>
+        <DCDate :date="day_obj.dayOverview.time"></DCDate>
+        <DCWeatherIcon :weather_code="day_obj.dayOverview.weathercode"> </DCWeatherIcon>
+        <DCSmallInfo :precipitation="day_obj.dayOverview.precipitation" :wind_direction="day_obj.dayOverview.wind_dir"
+            :wind_speed="day_obj.dayOverview.wind_speed"></DCSmallInfo>
         <div v-if="expanded">↟</div>
         <div v-else>↡</div>
     </div>
@@ -53,7 +53,7 @@ div {
 
 .dayCont {
     display: flex;
-    background-color: rgb(23, 182, 182);
+    background-color: rgb(89, 221, 221);
     padding: 7px;
 }
 
