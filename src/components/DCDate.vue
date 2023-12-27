@@ -29,7 +29,7 @@ const dayNames = new Map([
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1%;
+    padding: 5px;
     margin: 5px;
 }
 

@@ -25,7 +25,7 @@ var roundMaxTemp = Math.round(props.temp_max)
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2%;
+    padding: 5px;
 }
 .MinMax {
     font-size: 140%;

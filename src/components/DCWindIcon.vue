@@ -38,7 +38,7 @@ img {
   width: 80px;
 }
 .windArrowDiv {
-  padding: 2%;
+  padding: 2px;
   margin: 5px;
 }
 </style>
