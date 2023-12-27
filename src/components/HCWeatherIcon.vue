@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const props = defineProps({
     weather_code: Number,
-    isDay: Boolean,
+    is_Day: Number,
 })
 const WeatherCodeMap = new Map([
     [0, { name: "sun.png", alt: "clear" }],
@@ -39,10 +39,20 @@ var weather_obj
 // make a question mark weather png
 if (!WeatherCodeMap.has(props.weather_code)) {
     weather_obj = { name: "cloud.png", alt: "weather icon uNKNOWN DIE" }
-}else {
+} else {
     weather_obj = WeatherCodeMap.get(props.weather_code)
-}
 
+    if (props.is_Day == false) {
+        if (props.weather_code == 0) {
+            weather_obj = { name: "moonstars.png", alt: "clear" }
+        } else if (props.weather_code == 1) {
+            weather_obj = { name: "moonstars.png", alt: "clear" }
+        } else if (props.weather_code == 2) {
+            weather_obj = { name: "moonstars.png", alt: "clear" }
+        }
+    }
+
+}
 
 </script>
 

@@ -1,14 +1,21 @@
 <script setup>
 import { ref } from 'vue'
 
+
 const props = defineProps({
-    temp_h: Number,
+    temp: Number,
 })
+
+var roundTemp = Math.round(props.temp)
 
 </script>
 
 <template>
-    <p>tempH</p>
+    <div class="temp">{{ roundTemp }}°C</div>
 </template>
 
-<style></style>
+<style scoped>
+.temp {
+    font-size: 140%;
+}
+</style>

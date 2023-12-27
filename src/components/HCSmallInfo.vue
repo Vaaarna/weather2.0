@@ -1,0 +1,56 @@
+<script setup>
+import { ref } from 'vue'
+
+const props = defineProps({
+    temp_apparent: Number,
+    precipitation: Number,
+    wind_speed: Number,
+    wind_direction: Number,
+
+})
+function windDir(i) {
+    if (i <= 23) {
+        i = "Z "; //🡣"
+    } else if (i <= 68) {
+        i = "ZA "; //🡧"
+    } else if (i <= 113) {
+        i = "A  "; //🡠"
+    } else if (i <= 158) {
+        i = "DA "; //🡤 "
+    } else if (i <= 203) {
+        i = "D  "; //🡡"
+    } else if (i <= 248) {
+        i = "DR "; //🡥"
+    } else if (i <= 293) {
+        i = "R "; //🡢"
+    } else if (i <= 338) {
+        i = "ZR "; //🡦"
+    } else if (i <= 360) {
+        i = "Z "; //🡣"
+    }
+    return i;
+}
+var roundTempAppa = Math.round(props.temp_apparent)
+</script>
+
+<template>
+    <div class="smallInfoDiv">
+        <div class="infoLine">feels like: {{ roundTempAppa }}°C</div>
+        <div class="infoLine">precipitation: {{ precipitation }}%</div>
+        <div class="infoLine">wind: {{ wind_speed }} km/h {{ windDir(wind_direction) }}</div>
+    </div>
+</template>
+
+<style scoped>
+.smallInfoDiv {
+    display: flex;
+    flex-direction: column;
+    font-size: 80%;
+    align-items: flex-start;
+}
+
+.infoLine {
+    text-align: left;
+    white-space: nowrap;
+}
+</style>
