@@ -18,7 +18,24 @@ const dayNames = new Map([
 </script>
 
 <template>
-    <div> {{date.getDate()}}. {{dayNames.get(date.getDay())}}</div>
+    <div class="dateContainerDiv">
+        <div class="date">{{ date.getDate() }}. </div>
+        <div class="weekday"> {{ dayNames.get(date.getDay()) }}</div>
+    </div>
 </template>
 
-<style></style>
+<style scoped>
+.dateContainerDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    margin: 5px;
+}
+
+.date {
+    font-size: 170%;
+}
+
+
+</style>

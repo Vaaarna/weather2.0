@@ -75,34 +75,37 @@ watchEffect(fetchData)
 
 </script> 
 
-<template> <!-- html house -->
-  <main class="allDayMasterContainer">
-    <div class="oneDayContainer" v-for="day of allDays">
-      <DayContainer :day_obj="day"></DayContainer>
+<template>
+  <!-- html house -->
+  <div class="background">
+    <div class="allDayMasterContainer">
+      <div class="oneDayContainer" v-for="day of allDays">
+        <DayContainer :day_obj="day"></DayContainer>
+      </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <!-- css house -->
 <style scoped>
-
-main {
+.background {
   background-image: url("field1.jpg");
-  height: 100vh;
-  width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
   background-attachment: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  background-size: cover;
 
-.allDayMasterContainer {
   display: flex;
+  justify-content: center;
+
+}
+.allDayMasterContainer {
+  
+  display: flex;
+  align-items:stretch ;
   flex-direction: column;
-  background-color: rgb(33, 59, 59);
+  background-color: rgb(0, 85, 85);
+
 }
 </style>
 <!-- use css property "order:" to make 1-5am appear last? or something like it apperntly messes with html accesibility whatever that means grrrr-->

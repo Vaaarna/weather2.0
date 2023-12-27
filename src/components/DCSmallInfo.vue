@@ -7,7 +7,7 @@ const props = defineProps({
     wind_direction: Number,
 
 })
-function windDir (i) {
+function windDir(i) {
     if (i <= 23) {
         i = "Z "; //🡣"
     } else if (i <= 68) {
@@ -33,19 +33,21 @@ function windDir (i) {
 
 <template>
     <div class="smallInfoDiv">
-    <div class="infoLine">precipitation: {{precipitation}}%</div>
-    <div class="infoLine">wind: {{wind_speed}} km/h {{windDir(wind_direction)}}</div>
+        <div class="infoLine">precipitation: {{ precipitation }}%</div>
+        <div class="infoLine">wind: {{ wind_speed }} km/h {{ windDir(wind_direction) }}</div>
     </div>
 </template>
 
 <style scoped>
-.smallInfoDiv { 
+.smallInfoDiv {
     display: flex;
     flex-direction: column;
     font-size: 80%;
     align-items: flex-start;
 }
+
 .infoLine {
     text-align: left;
+    white-space: nowrap;
 }
 </style>
