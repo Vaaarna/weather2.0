@@ -89,15 +89,8 @@ watchEffect(fetchData)
 <!-- css house -->
 <style scoped>
 .background {
-  background-image: url("field1.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-
   display: flex;
   justify-content: center;
-
 }
 .allDayMasterContainer {
   
@@ -109,10 +102,6 @@ watchEffect(fetchData)
 }
 </style>
 <!-- use css property "order:" to make 1-5am appear last? or something like it apperntly messes with html accesibility whatever that means grrrr-->
-
-
-
-
 
 
 <!-- old <template><main>

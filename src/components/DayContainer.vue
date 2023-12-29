@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import { WeatherDay, WeatherHour, OverView } from "../functions";
 import DCDate from "./DCDate.vue";
-import DCWeatherIcon from "./DCWeatherIcon.vue";
+import WeatherIcon from "./WeatherIcon.vue";
 import DCSmallInfo from "./DCSmallInfo.vue";
-import DCWindIcon from './DCWindIcon.vue';
+import WindIcon from './WindIcon.vue';
 import DCTemps from './DCTemps.vue';
 import HourConteiner from './HourConteiner.vue';
 
@@ -12,7 +12,7 @@ const props = defineProps({
     day_obj: WeatherDay
 })
 
-const expanded = ref(true)
+const expanded = ref(false)
 
 function toggle() {
     expanded.value = !expanded.value
@@ -24,12 +24,12 @@ function toggle() {
 <template>
     <div class="dayCont" @click="toggle">
         <DCDate :date="day_obj.dayOverview.time"></DCDate>
-        <DCWeatherIcon  :weather_code="day_obj.dayOverview.weathercode"></DCWeatherIcon>
+        <WeatherIcon  :weather_code="day_obj.dayOverview.weathercode"></WeatherIcon>
         <DCTemps :temp_min="day_obj.dayOverview.temp_min" :temp_max="day_obj.dayOverview.temp_max"></DCTemps>
         <DCSmallInfo :precipitation="day_obj.dayOverview.precipitation" :wind_direction="day_obj.dayOverview.wind_dir"
             :wind_speed="day_obj.dayOverview.wind_speed"></DCSmallInfo>
-        <DCWindIcon :wind_speed="day_obj.dayOverview.wind_speed" :wind_direction="day_obj.dayOverview.wind_dir">
-        </DCWindIcon>
+        <WindIcon :wind_speed="day_obj.dayOverview.wind_speed" :wind_direction="day_obj.dayOverview.wind_dir">
+        </WindIcon>
         <div class="expander" v-if="expanded">↟</div>
         <div class="expander" v-else>↡</div>
     </div>

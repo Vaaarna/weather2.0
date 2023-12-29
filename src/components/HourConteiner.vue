@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 import { WeatherDay, WeatherHour, OverView } from "../functions";
 import HCTime from "./HCTime.vue"
-import HCWeatherIcon from './HCWeatherIcon.vue';
+import WeatherIcon from './WeatherIcon.vue';
 import HCTemp from './HCTemp.vue';
 import HCSmallInfo from './HCSmallInfo.vue';
-import HCWindIcon from './HCWindIcon.vue';
+import WindIcon from './WindIcon.vue';
 
 const props = defineProps({
     hour_obj: WeatherHour
@@ -24,10 +24,10 @@ var dayORnight = ""
 <template>
     <div  :class="dayORnight" class="OneHourDiv">
         <HCTime :time="hour_obj.time"></HCTime>
-        <HCWeatherIcon class="icons" :is_Day="hour_obj.is_day" :weather_code="hour_obj.weathercode"></HCWeatherIcon>
+        <WeatherIcon class="icons" :is_Day="hour_obj.is_day" :weather_code="hour_obj.weathercode"></WeatherIcon>
         <HCTemp :temp="hour_obj.temp"></HCTemp>
         <HCSmallInfo :temp_apparent="hour_obj.temp_app" :precipitation="hour_obj.precipitation" :wind_speed="hour_obj.wind_speed" :wind_direction="hour_obj.wind_dir"></HCSmallInfo>
-        <HCWindIcon class="icons" :wind_speed="hour_obj.wind_speed" :wind_direction="hour_obj.wind_dir"></HCWindIcon>
+        <WindIcon class="icons" :wind_speed="hour_obj.wind_speed" :wind_direction="hour_obj.wind_dir"></WindIcon>
     </div>
 </template>
 
