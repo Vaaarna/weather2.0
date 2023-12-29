@@ -28,16 +28,12 @@ if (props.wind_speed > 25) {
 </script>
 
 <template>
-  <div class="windArrowDiv">
-    <img :style="{ rotate: wind_direction + 'deg', scale: scale_factor }" :src="imgSrc" :alt="imgAlt">
-  </div>
+  <img :style="{ rotate: wind_direction + 'deg', scale: scale_factor }" :src="imgSrc" :alt="imgAlt">
 </template>
 
 <style scoped>
 img {
   width: 80px;
-}
-.windArrowDiv {
   padding: 2px;
   margin: 5px;
 }
