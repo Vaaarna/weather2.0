@@ -43,7 +43,7 @@ function toggle() {
     align-items: center;
     display: flex;
     justify-content: space-around;
-    background-color: rgb(89, 221, 221);
+    background-color: rgb(101, 209, 209);
     padding: 7px;
 }
 

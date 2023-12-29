@@ -31,13 +31,14 @@ function windDir(i) {
     return i;
 }
 var roundTempAppa = Math.round(props.temp_apparent)
+var roundWindSpeed = Math.round(props.wind_speed)
 </script>
 
 <template>
     <div class="smallInfoDiv">
         <div class="infoLine">feels like: {{ roundTempAppa }}°C</div>
         <div class="infoLine">precipitation: {{ precipitation }}%</div>
-        <div class="infoLine">wind: {{ wind_speed }} km/h {{ windDir(wind_direction) }}</div>
+        <div class="infoLine">wind: {{ roundWindSpeed }} km/h {{ windDir(wind_direction) }}</div>
     </div>
 </template>
 

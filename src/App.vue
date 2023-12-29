@@ -8,6 +8,9 @@ import DayContainer from "./components/DayContainer.vue";
 const allDays = ref([])
 const data = ref(null)
 
+// starts displaying day from hourOffset , at the end of the day are the hours that are not displayed from the next day
+const hourOffset  = 6
+
 async function fetchData() {
   var url = new URL("https://api.open-meteo.com/v1/forecast/");
   url.searchParams.append("latitude", 56.959);
@@ -61,10 +64,46 @@ async function fetchData() {
       data.value['hourly']['windspeed_10m'][i]
     )
 
-    var target_date = hour.time.getDate()
-    const found = allDays.value.find((day) => day.dayOverview.time.getDate() == target_date)
 
-    found.hours.push(hour)
+    // var target_date = hour.time.getDate()
+    // const found = allDays.value.find((day) => day.dayOverview.time.getDate() == target_date)
+
+    // function(h) {
+    //   this.setTime(this.getTime() + (h * 60 * 60 * 1000));
+    //   return this;
+    // }
+      // return console.log(day_t_extra5hours)
+      // return  true if hour should be under this day
+      // return  day_t_extra5hours.getDate() == hour_t
+
+    function a(day) {
+      var hour_t = hour.time
+      var day_t = day.dayOverview.time
+      var hour_t_extra5hours = new Date(hour_t.getTime() - (hourOffset * 60 * 60 * 1000))
+      // console.log("hour_t:")
+      // console.log(hour_t)
+      // console.log("day_t:")
+      // console.log(day_t)
+      // console.log("day_5h:")
+      // console.log(day_t_extra5hours)
+      
+      return day_t.getDate() == hour_t_extra5hours.getDate()
+    
+    }
+    const found = allDays.value.find(a)
+
+
+    // console.log(hour.time.getHours())
+    // console.log(Date())
+
+    var nowHour = new Date()
+    if (hour.time.getTime() >= nowHour.getTime()) {
+      found.hours.push(hour)
+    } else if (hour.time.getHours() >= nowHour.getHours()) {
+      found.hours.push(hour)
+    }
+    // found.hours.push(hour)
+
   }
 
   console.log(`visas dienas:`)
@@ -92,18 +131,13 @@ watchEffect(fetchData)
   display: flex;
   justify-content: center;
 }
+
 .allDayMasterContainer {
-  
+
   display: flex;
-  align-items:stretch ;
+  align-items: stretch;
   flex-direction: column;
   background-color: rgb(0, 85, 85);
 
 }
 </style>
-<!-- use css property "order:" to make 1-5am appear last? or something like it apperntly messes with html accesibility whatever that means grrrr-->
-
-
-<!-- old <template><main>
-  
-</main></template> -->

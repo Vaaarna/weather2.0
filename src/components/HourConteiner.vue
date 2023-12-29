@@ -45,11 +45,11 @@ var dayORnight = ""
 
 }
 .dayC {
-    background-color: rgb(139, 188, 192);
+    background-color: rgb(101, 209, 209);
     color: rgb(18, 38, 80);
 }
 .nightC {
-    background-color: rgb(18, 38, 80);
+    background-color: rgb(33, 49, 87);
     color: aliceblue;
 }
 </style>
