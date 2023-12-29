@@ -47,9 +47,7 @@ if (!WeatherCodeMap.has(props.weather_code)) {
 </script>
 
 <template>
-    <div>
-        <img v-bind:src="'../src/assets/icons/' + weather_obj.name" v-bind:alt="'weather icon:' + weather_obj.alt">
-    </div>
+    <img v-bind:src="'../src/assets/icons/' + weather_obj.name" v-bind:alt="'weather icon:' + weather_obj.alt">
 </template>
 
 <style scoped>
