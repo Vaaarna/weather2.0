@@ -1,11 +1,17 @@
--
-- order show 6 am as first hour after midnight show 1-5 am 
-- opcijas (cik dienas, vietu )
+npm run dev
+
+
+
+- uhostot verceli , paskatities vai strada
+- add a domane
+- finishing touches of design 
+- izvelne cik dienas https://vuejs.org/examples/#form-bindings
+https://vuejs.org/examples/#form-bindings
+- opcijas vai ir offsets, cik dienas uz priekšu ( velak vietu )
 - katrai sezonai, menesim, svetkos ari savs bg image
 
-<!-- use css property "order:" to make 1-5am appear last? or something like it apperntly messes with html accesibility whatever that means grrrr-->
-DONE:
+DONE!!!:
+- fix the moon
 - show only future hours
+- order show 6 am as first hour after midnight show 1-5 am 
 
-
-npm run dev

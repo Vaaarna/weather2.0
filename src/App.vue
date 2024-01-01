@@ -137,7 +137,13 @@ watchEffect(fetchData)
   display: flex;
   align-items: stretch;
   flex-direction: column;
-  background-color: rgb(0, 85, 85);
+  border-radius: 5px;
+}
 
+.oneDayContainer {
+  background-color: rgb(196, 243, 243);
+  border-radius: 5px;
+  margin:5px;  
+  padding: 3px;
 }
 </style>

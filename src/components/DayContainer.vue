@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { WeatherDay, WeatherHour, OverView } from "../functions";
+import { WeatherDay } from "../functions";
 import DCDate from "./DCDate.vue";
 import WeatherIcon from "./WeatherIcon.vue";
 import DCSmallInfo from "./DCSmallInfo.vue";
@@ -24,7 +24,7 @@ function toggle() {
 <template>
     <div class="dayCont" @click="toggle">
         <DCDate :date="day_obj.dayOverview.time"></DCDate>
-        <WeatherIcon  :weather_code="day_obj.dayOverview.weathercode"></WeatherIcon>
+        <WeatherIcon  :isDay="true" :weather_code="day_obj.dayOverview.weathercode"></WeatherIcon>
         <DCTemps :temp_min="day_obj.dayOverview.temp_min" :temp_max="day_obj.dayOverview.temp_max"></DCTemps>
         <DCSmallInfo :precipitation="day_obj.dayOverview.precipitation" :wind_direction="day_obj.dayOverview.wind_dir"
             :wind_speed="day_obj.dayOverview.wind_speed"></DCSmallInfo>
@@ -45,13 +45,14 @@ function toggle() {
     justify-content: space-around;
     background-color: rgb(101, 209, 209);
     padding: 7px;
+    border-radius: 5px;
+  
+
 }
 
 .hoursCont {
-    background-color: rgb(89, 197, 197);
     display: flex;
     flex-direction: column;
-    padding: 5px;
 }
 
 .expander {
