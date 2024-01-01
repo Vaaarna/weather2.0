@@ -6,7 +6,7 @@ npm run dev
 - add a domane
 - finishing touches of design 
 - izvelne cik dienas https://vuejs.org/examples/#form-bindings
-https://vuejs.org/examples/#form-bindings
+https://vuejs.org/guide/essentials/watchers.html#watchers
 - opcijas vai ir offsets, cik dienas uz priekšu ( velak vietu )
 - katrai sezonai, menesim, svetkos ari savs bg image
 
