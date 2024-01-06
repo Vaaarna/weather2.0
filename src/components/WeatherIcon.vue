@@ -52,22 +52,12 @@ if (!WeatherCodeMap.has(props.weather_code)) {
     }
 
 }
-import arrow1 from "@/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png"
-// const arrow1_url = new URL(`../../public/faveicon.png`, import.meta.url).href;
-const arrow1_url = new URL(`../../public/${weather_obj.name}`, import.meta.url).href;
-// const arrow1_url = new URL(`@/assets/icons/${weather_obj.name}`, import.meta.url).href;
-// const arrow1_url = new URL(`@/assets/icons/${weather_obj.name}`, import.meta.url).href;
+const weatherIconURL = new URL(`../../public/${weather_obj.name}`, import.meta.url).href;
 </script>
 
 <template>
-    <!-- the WORKING one: -->
-    <!-- <img v-bind:src="'../src/assets/icons/' + weather_obj.name" v-bind:alt="'weather icon:' + weather_obj.alt"> -->
-
-    <!-- <img :src="imgURL" alt="img" /> -->
-     <!-- <img src="..public/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
-    <!-- <img v-bind:src="`../public/${weather_obj.name}`" v-bind:alt="'weather icon:' + weather_obj.alt"> -->
-    <!-- <img v-bind:src="arrow1" v-bind:alt="'weather icon:' + weather_obj.alt"> -->
-    <img v-bind:src="arrow1_url" v-bind:alt="'weather icon:' + weather_obj.alt">
+   
+    <img v-bind:src="weatherIconURL" v-bind:alt="'weather icon:' + weather_obj.alt">
 </template>
 
 <style scoped>

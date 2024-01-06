@@ -3,7 +3,7 @@ npm run dev
 TODO
 - add a domane
 - salabot lai strada icons
-- make and add favicon
+- redo and add favicon (bike wheel? sun?)
 question mark weather icon if weathercodee is unknown
 - finishing touches of design 
 - izvelne cik dienas https://vuejs.org/examples/#form-bindings

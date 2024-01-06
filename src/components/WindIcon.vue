@@ -9,13 +9,13 @@ const props = defineProps({
 let imgSrc;
 let imgAlt;
 if (props.wind_speed < 5) {
-  imgSrc = "../src/assets/icons/arrow1.png",
+  imgSrc = "../../public/arrow1.png",
     imgAlt = "small wind arrow";
 } else if (props.wind_speed < 15) {
-  imgSrc = "../src/assets/icons/arrow2.png",
+  imgSrc = "../../public/arrow2.png",
     imgAlt = "medium wind arrow";
 } else {
-  imgSrc = "../src/assets/icons/arrow3.png",
+  imgSrc = "../../public/arrow3.png",
     imgAlt = "big wind arrow";
 }
 

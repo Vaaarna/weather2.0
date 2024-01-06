@@ -128,6 +128,7 @@ watchEffect(fetchData)
 
 <!-- css house -->
 <style scoped>
+
 .background {
   display: flex;
   justify-content: center;
