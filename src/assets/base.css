@@ -3,10 +3,9 @@ body {
     margin: 0px;
 
     background-image: url("@/assets/field1.jpg");
-    background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    background-size:100%;
+    background-size:cover;
   }
   
 
