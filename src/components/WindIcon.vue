@@ -8,14 +8,15 @@ const props = defineProps({
 
 let imgSrc;
 let imgAlt;
+// const windIconURL = new URL(`../../public/${weather_obj.name}`, import.meta.url).href;
 if (props.wind_speed < 5) {
-  imgSrc = "../../public/arrow1.png",
+  imgSrc = new URL(`../../public/arrow1.png`, import.meta.url).href,
     imgAlt = "small wind arrow";
 } else if (props.wind_speed < 15) {
-  imgSrc = "../../public/arrow2.png",
+  imgSrc = new URL(`../../public/arrow2.png`, import.meta.url).href,
     imgAlt = "medium wind arrow";
 } else {
-  imgSrc = "../../public/arrow3.png",
+  imgSrc = new URL(`../../public/arrow3.png`, import.meta.url).href,
     imgAlt = "big wind arrow";
 }
 
