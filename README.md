@@ -1,9 +1,9 @@
 npm run dev
 
-
-
-- uhostot verceli , paskatities vai strada
+TODO
 - add a domane
+- salabot lai strada icons
+- make and add favicon
 question mark weather icon if weathercodee is unknown
 - finishing touches of design 
 - izvelne cik dienas https://vuejs.org/examples/#form-bindings
@@ -15,4 +15,5 @@ DONE!!!:
 - fix the moon
 - show only future hours
 - order show 6 am as first hour after midnight show 1-5 am 
+- uhostot verceli 
 
