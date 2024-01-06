@@ -118,7 +118,7 @@ watchEffect(fetchData)
   <!-- html house -->
   <div class="background">
     <div class="allDayMasterContainer">
-      <img src="../src/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png">
+      <!-- <img src="../src/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
       <div class="oneDayContainer" v-for="day of allDays">
         <DayContainer :day_obj="day"></DayContainer>
       </div>

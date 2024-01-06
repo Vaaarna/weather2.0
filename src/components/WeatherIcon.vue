@@ -53,11 +53,16 @@ if (!WeatherCodeMap.has(props.weather_code)) {
 
 }
 
-
+// const imgURL = new URL(`./public/${weather_obj.name}`, import.meta.url).href;
 </script>
 
 <template>
-    <img v-bind:src="'../src/assets/icons/' + weather_obj.name" v-bind:alt="'weather icon:' + weather_obj.alt">
+    <!-- the WORKING one: -->
+    <!-- <img v-bind:src="'../src/assets/icons/' + weather_obj.name" v-bind:alt="'weather icon:' + weather_obj.alt"> -->
+
+    <!-- <img :src="imgURL" alt="img" /> -->
+     <!-- <img src="..public/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
+    <img v-bind:src="`../public/${weather_obj.name}`" v-bind:alt="'weather icon:' + weather_obj.alt">
 </template>
 
 <style scoped>
