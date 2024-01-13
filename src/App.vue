@@ -140,6 +140,9 @@ watchEffect(fetchData)
   align-items: stretch;
   flex-direction: column;
   border-radius: 5px;
+
+  width: 90%;
+  max-width: 500px;
 }
 
 .oneDayContainer {

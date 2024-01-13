@@ -31,11 +31,13 @@ const dayNames = new Map([
     align-items: center;
     padding: 5px;
     margin: 5px;
+    
+    width: 15%;
+
 }
 
 .date {
     font-size: 170%;
 }
-
 
 </style>
