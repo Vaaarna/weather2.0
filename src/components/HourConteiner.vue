@@ -34,7 +34,7 @@ var dayORnight = ""
 <style scoped>
 
 .icons{
-    width: 50px;
+    width: 15%;
 }
 
 .OneHourDiv{

@@ -46,12 +46,16 @@ var roundWindSpeed = Math.round(props.wind_speed)
 .smallInfoDiv {
     display: flex;
     flex-direction: column;
-    font-size: 80%;
     align-items: flex-start;
+
+    width: 15%;
+    container-type: inline-size;
 }
 
 .infoLine {
     text-align: left;
     white-space: nowrap;
+
+    font-size: 17cqw;
 }
 </style>

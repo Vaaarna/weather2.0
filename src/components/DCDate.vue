@@ -30,14 +30,16 @@ const dayNames = new Map([
     flex-direction: column;
     align-items: center;
     padding: 5px;
-    margin: 5px;
     
     width: 15%;
-
+    container-type: inline-size;
 }
 
 .date {
-    font-size: 170%;
+    font-size: 50cqw;
+}
+.weekday {
+    font-size: 22cqw;
 }
 
 </style>

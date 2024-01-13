@@ -24,10 +24,13 @@ var roundMaxTemp = Math.round(props.temp_max)
 .TempContainerDiv {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 5px;
+    align-items: flex-end;
+    padding: 3px;
+
+    width: 15%;
+    container-type: inline-size;
 }
 .MinMax {
-    font-size: 140%;
+    font-size: 37cqw;
 }
 </style>

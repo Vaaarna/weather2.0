@@ -35,7 +35,6 @@ if (props.wind_speed > 25) {
 <style scoped>
 img {
   width: 15%;
-  padding: 2px;
   margin: 5px;
 }
 </style>

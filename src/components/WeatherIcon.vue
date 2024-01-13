@@ -63,6 +63,6 @@ const weatherIconURL = new URL(`../../public/${weather_obj.name}`, import.meta.u
 <style scoped>
 img {
     width: 15%;
-    padding: 7px;
+    padding: 5px;
 }
 </style>

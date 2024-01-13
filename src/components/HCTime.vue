@@ -19,13 +19,16 @@ const props = defineProps({
 <style scoped>
 .timeDiv {
     display: flex;
-    
+    padding: 5px;
+
+    width: 15%;
+    container-type: inline-size;
 }
 .time {
-    font-size: 150%;
+    font-size: 40cqw;
 }
 
 .zeros {
-    font-size: 80%;
+    font-size: 20cqw;
 }
 </style>
