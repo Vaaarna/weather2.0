@@ -9,7 +9,7 @@ const allDays = ref([])
 const data = ref(null)
 
 // starts displaying day from hourOffset , at the end of the day are the hours that are not displayed from the next day
-const hourOffset = 6
+const hourOffset = 0
 
 async function fetchData() {
   var url = new URL("https://api.open-meteo.com/v1/forecast/");
@@ -143,10 +143,14 @@ watchEffect(fetchData)
 
   width: 90%;
   max-width: 500px;
+  
+
 }
 
 .oneDayContainer {
   background-color: rgb(196, 243, 243);
+  max-height: 750px;
+
   border-radius: 5px;
   margin: 5px;
   padding: 3px;

@@ -51,8 +51,13 @@ function toggle() {
 }
 
 .hoursCont {
+    /* size: 80%; */
+    height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x:scroll ;
+    overflow-y:scroll;
+   
 }
 
 .expander {
