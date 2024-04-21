@@ -12,7 +12,7 @@ const props = defineProps({
     day_obj: WeatherDay
 })
 // IF FALSE hours are collapsed by default
-const expanded = ref(true)
+const expanded = ref(false)
 
 function toggle() {
     expanded.value = !expanded.value
