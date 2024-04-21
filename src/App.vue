@@ -149,7 +149,6 @@ watchEffect(fetchData)
 
 .oneDayContainer {
   background-color: rgb(196, 243, 243);
-  max-height: 750px;
 
   border-radius: 5px;
   margin: 5px;

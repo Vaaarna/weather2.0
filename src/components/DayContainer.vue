@@ -11,8 +11,8 @@ import HourConteiner from './HourConteiner.vue';
 const props = defineProps({
     day_obj: WeatherDay
 })
-
-const expanded = ref(false)
+// IF FALSE hours are collapsed by default
+const expanded = ref(true)
 
 function toggle() {
     expanded.value = !expanded.value
@@ -52,10 +52,12 @@ function toggle() {
 
 .hoursCont {
     /* size: 80%; */
-    height: 100%;
+    max-height: 750px;
+    
     display: flex;
     flex-direction: column;
-    overflow-x:scroll ;
+    
+    scrollbar-color: rgb(13, 122, 31) rgb(180, 224, 191);
     overflow-y:scroll;
    
 }
