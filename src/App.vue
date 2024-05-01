@@ -106,8 +106,8 @@ async function fetchData() {
 
   }
 
-  console.log(`visas dienas:`)
-  console.log(allDays.value)
+  // console.log(`visas dienas:`)
+  // console.log(allDays.value)
 }
 
 watchEffect(fetchData)
