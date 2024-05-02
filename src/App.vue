@@ -5,6 +5,7 @@ import { ref } from "vue";
 import { WeatherDay, WeatherHour, OverView } from "./functions";
 import DayContainer from "./components/DayContainer.vue";
 import Search from './components/Search.vue';
+import examples from './components/examples.vue';
 
 const allDays = ref([])
 const data = ref(null)
@@ -102,6 +103,7 @@ watchEffect(fetchData)
   <div class="background">
 
     <search></search>
+    <!-- <examples></examples> -->
 
         <div class="allDayMasterContainer">
           <!-- <img src="../src/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
