@@ -4,17 +4,22 @@ import { watchEffect } from "vue";
 import { ref } from "vue";
 import { WeatherDay, WeatherHour, OverView } from "./functions";
 import DayContainer from "./components/DayContainer.vue";
+import Search from './components/Search.vue';
 
 const allDays = ref([])
 const data = ref(null)
 
 // starts displaying day from hourOffset , at the end of the day are the hours that are not displayed from the next day
-const hourOffset = 0
+// const hourOffset = 0
 
 async function fetchData() {
+  var latit = 56.959;
+  var longit = 24.061;
+
+
   var url = new URL("https://api.open-meteo.com/v1/forecast/");
-  url.searchParams.append("latitude", 56.959);
-  url.searchParams.append("longitude", 24.061);
+  url.searchParams.append("latitude", latit);
+  url.searchParams.append("longitude", longit);
   url.searchParams.append("daily", "weathercode");
   url.searchParams.append("daily", "temperature_2m_max");
   url.searchParams.append("daily", "temperature_2m_min");
@@ -64,37 +69,9 @@ async function fetchData() {
       data.value['hourly']['windspeed_10m'][i]
     )
 
-
-    // var target_date = hour.time.getDate()
-    // const found = allDays.value.find((day) => day.dayOverview.time.getDate() == target_date)
-
-    // function(h) {
-    //   this.setTime(this.getTime() + (h * 60 * 60 * 1000));
-    //   return this;
-    // }
-    // return console.log(day_t_extra5hours)
-    // return  true if hour should be under this day
-    // return  day_t_extra5hours.getDate() == hour_t
-
-    function a(day) {
-      var hour_t = hour.time
-      var day_t = day.dayOverview.time
-      var hour_t_extra5hours = new Date(hour_t.getTime() - (hourOffset * 60 * 60 * 1000))
-      // console.log("hour_t:")
-      // console.log(hour_t)
-      // console.log("day_t:")
-      // console.log(day_t)
-      // console.log("day_5h:")
-      // console.log(day_t_extra5hours)
-
-      return day_t.getDate() == hour_t_extra5hours.getDate()
-
-    }
-    const found = allDays.value.find(a)
-
-
-    // console.log(hour.time.getHours())
-    // console.log(Date())
+    // ieliek stundu pie pareizas dienas
+    var target_date = hour.time.getDate()
+    const found = allDays.value.find((day) => day.dayOverview.time.getDate() == target_date)
 
     var nowHour = new Date()
     if (hour.time.getTime() >= nowHour.getTime()) {
@@ -105,29 +82,39 @@ async function fetchData() {
     // found.hours.push(hour)
 
   }
-
   // console.log(`visas dienas:`)
   // console.log(allDays.value)
+}
+
+function changeLocation() {
+  latit = 56.4799;
+  longit = 23.389;
+
 }
 
 watchEffect(fetchData)
 
 </script> 
 
+
 <template>
   <!-- html house -->
   <div class="background">
-    <div class="allDayMasterContainer">
-      <!-- <img src="../src/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
-      <div class="oneDayContainer" v-for="day of allDays">
-        <DayContainer :day_obj="day"></DayContainer>
-      </div>
-    </div>
+
+    <search></search>
+
+        <div class="allDayMasterContainer">
+          <!-- <img src="../src/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
+          <div class="oneDayContainer" v-for="day of allDays">
+            <DayContainer :day_obj="day"></DayContainer>
+          </div>
+        </div>
   </div>
 </template>
 
 <!-- css house -->
 <style scoped>
+
 
 .background {
   display: flex;
@@ -143,8 +130,6 @@ watchEffect(fetchData)
 
   width: 90%;
   max-width: 500px;
-  
-
 }
 
 .oneDayContainer {

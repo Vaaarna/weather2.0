@@ -28,3 +28,4 @@ export class WeatherHour {
         this.wind_speed = wind_speed;
     }
 }
+
