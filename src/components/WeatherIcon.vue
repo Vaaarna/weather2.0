@@ -21,7 +21,7 @@ const WeatherCodeMap = new Map([
     [57, { name: "dense frozen drizzle.png", alt: "dense freezing drizzle" }],
 
     [61, { name: "rain.png", alt: "slight rain" }],
-    [63, { name: "rain moderate.png", alt: "moderate rain" }],
+    [63, { name: "rain moderate .png", alt: "moderate rain" }],
     [65, { name: "rain heavy.png", alt: "heavy  rain" }],
 
     [66, { name: "rain freezing.png", alt: "Light freezing rain" }],
