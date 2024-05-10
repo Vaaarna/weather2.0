@@ -42,17 +42,36 @@
 // });
 
 import { ref } from 'vue'
-import worldcities from './assets/simplemaps_worldcities_basicv1.77/worldcities.csv'
 
+// const props = defineProps({
+//     nosaukums: String,
+//     lat: Number,
+//     lng: Number,
+// })
+// import {csv}
 
-const lokacija = ref('dzegužkalns');
+// const koordinatas = new Map([
+//     [56.9489, 24.1064],
+//     [55.8750, 26.5356],
+//     [56.959, 24.061],
+// ]);
 
-var koordinatas = "0"
-
-const vietas = new Map([
-    ["dzegužkalns", koordinatas],
-    ["tervete", koordinatas],
+const pilsetas = new Map([
+    ["Riga", { lat: 56.9489, lng: 24.1064 }],
+    ["Daugavpils", { lat: 55.8750, lng: 26.5356 }], 
+    ["Dzegužkalns", { lat: 56.959, lng: 24.061 }], 
+       
 ]);
+
+
+const lokacija = ref('Dzegužkalns');
+
+// var koordinatas = "0"
+
+// const vietas = new Map([
+//     ["dzegužkalns", koordinatas],
+//     ["tervete", koordinatas],
+// ]);
 
 // console.log(worldcities.value);
 
@@ -62,9 +81,13 @@ function onInputChange(event) {
 
 
 function getStyled() {
-    if (vietas.has(lokacija.value)) {
-        // console.log("correct");
+    // if (vietas.has(lokacija.value)) {
+    if (pilsetas.has(lokacija.value)) {
+    
+        console.log(pilsetas.get(lokacija.value));
+        
         return "inputCorrect";
+
     } else {
         // console.log("wrong");
         return "inputWrong";

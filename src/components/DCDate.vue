@@ -25,6 +25,7 @@ const dayNames = new Map([
 </template>
 
 <style scoped>
+
 .dateContainerDiv {
     display: flex;
     flex-direction: column;
