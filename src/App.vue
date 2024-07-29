@@ -79,9 +79,9 @@ async function fetchData() {
       found.hours.push(hour)
     } else if (hour.time.getHours() >= nowHour.getHours()) {
       found.hours.push(hour)
+      // found.hours.push(hour)
+      
     }
-    // found.hours.push(hour)
-
   }
   // console.log(`visas dienas:`)
   // console.log(allDays.value)
