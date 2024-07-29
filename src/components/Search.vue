@@ -1,70 +1,8 @@
 <script setup>
-// const props = defineProps({
-//     defaultLocation: dzeguzkalns,
-//     input:input,
-// })
-// const isValid = ref(true)
 
-// const isValid = computed(() => {
-// console.log(isValid.value)
-//  if (!vietas.has(lokacija)) {
-//        return false
-//     }else {
-//        return true
-//     }
-// });
-// function validateLocation() {
-// }
-// var isValid = ""
-// function validateLocation() {
-// if (!vietas.has(lokacija)) {
-//     isValid.value = false
-//     console.log("validate location")
-//     console.log(isValid.value)
-// } else {
-//     isValid.value = true
-//     console.log("validate location2")
-
-//     console.log(isValid.value)
-
-// }};
-
-// const inputClassName = computed(() => {
-//     // console.log("poop")
-//     // console.log(isValid.value)
-//     if (isValid.value == false) {
-//         return "inputWrong"
-//     } else {
-//         return "inputCorrect"
-//     }
-
-// return author.books.length > 0 ? 'Yes' : 'No'
-// });
-
-
-
-// const props = defineProps({
-//     nosaukums: String,
-//     lat: Number,
-//     lng: Number,
-// })
-// import {csv}
-
-// const koordinatas = new Map([
-//     [56.9489, 24.1064],
-//     [55.8750, 26.5356],
-//     [56.959, 24.061],
-// ]);
-
-// var koordinatas = "0"
-
-// const vietas = new Map([
-//     ["dzegužkalns", koordinatas],
-//     ["tervete", koordinatas],
-// ]);
-
-// console.log(worldcities.value);
 import { ref } from 'vue'
+
+const emit = defineEmits(['changeLocation'])
 
 // pilsetu nosaukumiem jābūt ar mazajiem burtiem bez mīkstinajumiem būs jācheko pret normalized unnicode nosaukumiem
 const pilsetas = new Map([
@@ -85,7 +23,7 @@ function onInputChange(event) {
     lokacija.value = event.target.value
     if (pilsetas.has(lokacija.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
         isValidLocation.value = true
-        // emit
+        emit('changeLocation', lokacija.value)
     } else {
         isValidLocation.value = false
     }

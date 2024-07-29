@@ -6,9 +6,11 @@ import { WeatherDay, WeatherHour, OverView } from "./functions";
 import DayContainer from "./components/DayContainer.vue";
 import Search from './components/Search.vue';
 import examples from './components/examples.vue';
+// import DCSmallInfo from "./components/DCSmallInfo.vue";
 
 const allDays = ref([])
 const data = ref(null)
+const locationName = ref("")
 
 // starts displaying day from hourOffset , at the end of the day are the hours that are not displayed from the next day
 // const hourOffset = 0
@@ -80,47 +82,49 @@ async function fetchData() {
     } else if (hour.time.getHours() >= nowHour.getHours()) {
       found.hours.push(hour)
       // found.hours.push(hour)
-      
+
     }
   }
   // console.log(`visas dienas:`)
   // console.log(allDays.value)
 }
 
-function changeLocation() {
-  latit = 56.4799;
-  longit = 23.389;
-
+function changeLocation(newLocation) {
+  locationName.value = newLocation
 }
 
 watchEffect(fetchData)
 
-</script> 
+</script>
 
 
 <template>
   <!-- html house -->
   <div class="background">
 
-    <search></search>
-    <!-- <examples></examples> -->
-
-        <div class="allDayMasterContainer">
-          <!-- <img src="../src/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
-          <div class="oneDayContainer" v-for="day of allDays">
-            <DayContainer :day_obj="day"></DayContainer>
-          </div>
+    <Search @change-location="changeLocation"></Search>
+    <div>
+      <div class="locationName"> Location: {{ locationName }}</div>
+      <div class="allDayMasterContainer">
+        <!-- <img src="../src/assets/icons/arrow_finalV3_rinalds_parpucis_9a.png"> -->
+        <div class="oneDayContainer" v-for="day of allDays">
+          <DayContainer :day_obj="day"></DayContainer>
         </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <!-- css house -->
 <style scoped>
-
-
 .background {
   display: flex;
   justify-content: center;
+}
+
+.locationName {
+  background-color: rgb(0, 94, 94);
+
 }
 
 .allDayMasterContainer {
