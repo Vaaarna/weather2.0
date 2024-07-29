@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 
 const props = defineProps({
     weather_code: Number,
@@ -45,30 +46,39 @@ const WeatherCodeMap = new Map([
     [96, { name: "thunderstorm slight hail.png", alt: "Thunderstorm with slight hail" }],
     [99, { name: "thunderstorm heavyhail.png", alt: "Thunderstorm with heavy hail" }],
 ])
-var weather_obj
-// make a question mark weather png
-if (!WeatherCodeMap.has(props.weather_code)) {
-    weather_obj = { name: "cloud.png", alt: "weather icon uNKNOWN DIE" }
-} else {
-    weather_obj = WeatherCodeMap.get(props.weather_code)
+function returnWeatherObj() {
+    var weather_obj
+    // make a question mark weather png
+    if (!WeatherCodeMap.has(props.weather_code)) {
+        weather_obj = { name: "cloud.png", alt: "weather icon uNKNOWN DIE" }
+    } else {
+        weather_obj = WeatherCodeMap.get(props.weather_code)
 
-    if (props.isDay == false) {
-        if (props.weather_code == 0) {
-            weather_obj = { name: "moon clear.png", alt: "clear" }
-        } else if (props.weather_code == 1) {
-            weather_obj = { name: "moon mainly clear.png", alt: "mainly clear" }
-        } else if (props.weather_code == 2) {
-            weather_obj = { name: "moon partly cloudy.png", alt: "partly cloudy" }
+        if (props.isDay == false) {
+            if (props.weather_code == 0) {
+                weather_obj = { name: "moon clear.png", alt: "clear" }
+            } else if (props.weather_code == 1) {
+                weather_obj = { name: "moon mainly clear.png", alt: "mainly clear" }
+            } else if (props.weather_code == 2) {
+                weather_obj = { name: "moon partly cloudy.png", alt: "partly cloudy" }
+            }
         }
-    }
 
-}
-const weatherIconURL = new URL(`../../public/${weather_obj.name}`, import.meta.url).href;
+    }
+    return weather_obj;
+    //    return ;
+
+};
+const weatherObj = computed(returnWeatherObj);
+const weatherIconURL = computed(() => new URL(`../../public/${weatherObj.value.name}`, import.meta.url).href);
+const weatherAltText = computed(() => weatherObj.value.alt)
+
+
 </script>
 
 <template>
-   
-    <img v-bind:src="weatherIconURL" v-bind:alt="'weather icon:' + weather_obj.alt">
+
+    <img v-bind:src="weatherIconURL" v-bind:alt="'weather icon:' + weatherAltText">
 </template>
 
 <style scoped>

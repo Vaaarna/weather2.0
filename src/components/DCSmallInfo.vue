@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref , computed} from 'vue'
 
 const props = defineProps({
     precipitation: Number,
@@ -30,7 +30,9 @@ function windDir(i) {
     return i;
 }
 
-var roundWindSpeed = Math.round(props.wind_speed)
+// var roundWindSpeed = Math.round(props.wind_speed)
+const roundWindSpeed = computed(()=>Math.round(props.wind_speed))
+
 </script>
 
 <template>

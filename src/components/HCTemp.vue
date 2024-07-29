@@ -1,12 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { ref , computed } from 'vue'
 
 
 const props = defineProps({
     temp: Number,
 })
-
-var roundTemp = Math.round(props.temp)
+const roundTemp = computed(()=>Math.round(props.temp))
+// var roundTemp = Math.round(props.temp)
 
 </script>
 

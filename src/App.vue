@@ -15,10 +15,12 @@ const locationName = ref("")
 // starts displaying day from hourOffset , at the end of the day are the hours that are not displayed from the next day
 // const hourOffset = 0
 
-async function fetchData() {
-  var latit = 56.959;
-  var longit = 24.061;
+// var latit = ;
+// var longit = 24.061;
 
+async function fetchData(latit, longit) {
+  // console.log("here4", latit)
+  // console.log("here4", longit)
 
   var url = new URL("https://api.open-meteo.com/v1/forecast/");
   url.searchParams.append("latitude", latit);
@@ -43,6 +45,7 @@ async function fetchData() {
   data.value = await (await fetch(url)).json()
   // console.log(data.value)
 
+  allDays.value = []
   for (var i = 0; i < data.value['daily']['time'].length; i++) {
 
     const overview = new OverView(
@@ -58,6 +61,7 @@ async function fetchData() {
 
     allDays.value.push(this_day)
   }
+
 
   for (var i = 0; i < data.value['hourly']['time'].length; i++) {
     const hour = new WeatherHour(
@@ -89,11 +93,21 @@ async function fetchData() {
   // console.log(allDays.value)
 }
 
-function changeLocation(newLocation) {
-  locationName.value = newLocation
+function locationToCoords(newLocation){
+  return [-77.84, 166.71]
 }
 
-watchEffect(fetchData)
+function changeLocation(newLocation) {
+  locationName.value = newLocation
+  // console.log("here1")
+  const [newLat, newLong] = locationToCoords(newLocation)
+  // console.log("lat", newLat)
+  // console.log("long", newLong)
+  // console.log("here2")
+  fetchData(newLat, newLong)
+}
+
+watchEffect(fetchData(56.959, 24.061))
 
 </script>
 

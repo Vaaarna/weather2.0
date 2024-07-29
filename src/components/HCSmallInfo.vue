@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref , computed} from 'vue'
 
 const props = defineProps({
     temp_apparent: Number,
@@ -30,8 +30,12 @@ function windDir(i) {
     }
     return i;
 }
-var roundTempAppa = Math.round(props.temp_apparent)
-var roundWindSpeed = Math.round(props.wind_speed)
+const roundTempAppa = computed(()=>Math.round(props.temp_apparent))
+const roundWindSpeed = computed(()=>Math.round(props.wind_speed))
+// 
+
+// var roundTempAppa = Math.round(props.temp_apparent)
+// var roundWindSpeed = Math.round(props.wind_speed)
 </script>
 
 <template>

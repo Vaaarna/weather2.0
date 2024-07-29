@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 
 const props = defineProps({
@@ -7,16 +7,15 @@ const props = defineProps({
     temp_max: Number,
 })
 
-var roundMinTemp = Math.round(props.temp_min)
-var roundMaxTemp = Math.round(props.temp_max)
-
+const roundMinTemp = computed(() => Math.round(props.temp_min))
+const roundMaxTemp = computed(() => Math.round(props.temp_max))
 
 </script>
 
 <template>
     <div class="TempContainerDiv">
-        <div class="MinMax">{{roundMaxTemp}}°C</div>
-        <div class="MinMax">{{roundMinTemp}}°C</div>
+        <div class="MinMax">{{ roundMaxTemp }}°C</div>
+        <div class="MinMax">{{ roundMinTemp }}°C</div>
     </div>
 </template>
 
@@ -30,6 +29,7 @@ var roundMaxTemp = Math.round(props.temp_max)
     width: 15%;
     container-type: inline-size;
 }
+
 .MinMax {
     font-size: 37cqw;
 }
