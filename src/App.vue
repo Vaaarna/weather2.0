@@ -92,7 +92,7 @@ async function fetchData(latit, longit) {
   // console.log(`visas dienas:`)
   // console.log(allDays.value)
 }
-
+//si funkcija panems nosaukumu un atgriezis koordinatas
 function locationToCoords(newLocation){
   return [-77.84, 166.71]
 }
@@ -107,7 +107,7 @@ function changeLocation(newLocation) {
   fetchData(newLat, newLong)
 }
 
-watchEffect(fetchData(56.959, 24.061))
+watchEffect(fetchData(56.959, 24.061)) //shoud be default/last coords set in the browser, for now default is dzegužkalna koords 56.959, 24.061
 
 </script>
 
